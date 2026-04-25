@@ -205,36 +205,6 @@ This makes DocSentinel suitable for:
 
 ---
 
-## 📁 Project Structure
-
-```
-docsentinel/
-├── ingestion/
-│   ├── mineru_parser.py        # PDF layout parsing, image extraction
-│   └── persona_generator.py   # Qwen persona auto-generation
-├── db/
-│   ├── actian_schema.py        # Named vector collection setup
-│   ├── indexer.py              # Chunk + image embedding + storage
-│   └── audit_logger.py        # Reasoning trace storage
-├── retrieval/
-│   ├── text_engine.py          # Semantic search with metadata filter
-│   ├── image_engine.py         # Jina-CLIP visual search
-│   ├── structural_engine.py    # Parent-heading context retrieval
-│   └── fusion.py               # Reciprocal Rank Fusion
-├── agent/
-│   ├── loop.py                 # Self-healing retry loop
-│   └── critic.py               # Qwen 1.5B relevance scorer
-├── generation/
-│   └── answerer.py             # Qwen2.5-VL answer generation with persona
-├── ui/
-│   └── app.py                  # Chainlit interface
-├── docker/
-│   └── Dockerfile              # ARM-ready container
-└── README.md
-```
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
