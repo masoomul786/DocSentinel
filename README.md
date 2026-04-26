@@ -523,7 +523,7 @@ low_confidence = client.scroll(
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-team/docsentinel.git
+git clone https://github.com/masoomul786/DocSentinel/project.git
 cd docsentinel
 ```
 
