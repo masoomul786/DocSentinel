@@ -1,0 +1,34 @@
+# ── Core — always required ─────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12
+httpx==0.27.2
+pydantic==2.9.2
+websockets==13.1
+qdrant-client==1.12.0
+pypdf==5.1.0
+python-dotenv==1.0.1
+aiofiles==24.1.0
+Pillow==10.4.0
+
+# ── Text embeddings (optional, strongly recommended) ──────────────────────────
+# Enables real semantic search in the TEXT vector space (384-dim).
+# Without this, a deterministic mock encoder is used (demo still works).
+# sentence-transformers==3.3.1
+# torch==2.4.0
+
+# ── Image embeddings via Jina CLIP v1 (optional) ──────────────────────────────
+# jinaai/jina-clip-v1 encodes BOTH text and images into the SAME 512-dim space.
+# This is what enables zero-shot visual troubleshooting:
+#   searching "burnt thermal fuse" (text) finds the fuse diagram (image).
+# Requires: transformers, torch, and Pillow (already above).
+# transformers==4.44.2
+# torch==2.4.0
+#
+# Alternative: open_clip (slightly worse multimodal alignment than Jina)
+# open-clip-torch==2.26.1
+
+# ── MinerU PDF parser (optional, recommended for layout-aware extraction) ──────
+# Install separately AFTER the core requirements:
+#   pip install magic-pdf
+# Without it, DocSentinel falls back to pypdf (above) automatically.
