@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Actian VectorAI DB (Qdrant-compatible REST API)
+  actian-vectorai:
+    image: qdrant/qdrant:latest
+    container_name: actian-vectorai
+    ports:
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    volumes:
+      - ../actian_data:/qdrant/storage:z
+    environment:
+      - QDRANT__LOG_LEVEL=WARN
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # DocSentinel Backend
+  docsentinel-api:
+    build:
+      context: ../backend          # ← corrected: relative to this file's location
+      dockerfile: Dockerfile
+    container_name: docsentinel-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app
+      - ../frontend:/app/frontend
+      - ../uploads:/app/uploads
+      - ../extracted_images:/app/extracted_images
+    environment:
+      - ACTIAN_HOST=actian-vectorai
+      - ACTIAN_PORT=6333
+      - LM_STUDIO_URL=${LM_STUDIO_URL:-http://host.docker.internal:1234}
+    depends_on:
+      actian-vectorai:
+        condition: service_healthy
+    restart: unless-stopped
+    # ARM64 support: set DOCKER_PLATFORM=linux/arm64 before running
+    platform: ${DOCKER_PLATFORM:-linux/amd64}
+
+volumes:
+  actian_data:
