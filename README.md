@@ -685,7 +685,8 @@ DocSentinel was designed from the ground up for offline and edge deployment.
 
 **ARM native:**
 - Docker image built for `linux/arm64`
-- Tested on Apple M1/M2/M3 (macOS) and ARM64 Linux
+- Tested intel i5 10gen 8GB RAM with NVIDIA GPU with CUDA support (tested on GTX 3050)
+- Apple M1/M2/M3 (macOS) and ARM64 Linux
 - LM Studio runs natively on Apple Silicon
 - Actian VectorAI DB ARM image available
 
