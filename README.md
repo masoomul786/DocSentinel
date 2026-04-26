@@ -659,7 +659,7 @@ docsentinel/
 
 ## Performance Benchmarks
 
-Tested on Apple MacBook Pro M3 (ARM, 32GB RAM) — fully offline, no internet connection.
+Apple MacBook Pro M3 (ARM, 32GB RAM) — fully offline, no internet connection.
 
 | Operation | Time |
 |---|---|
@@ -740,6 +740,7 @@ Every behavior shown in this README — the agent retry loop output, the audit l
 
 **Bonus (judges' discretion):**
 - ✅ Runs fully offline — zero cloud dependency
+- ✅ Tested intel i5 10gen 8GB RAM with NVIDIA GPU with CUDA support (tested on GTX 3050)
 - ✅ Runs on ARM — tested on Apple Silicon and ARM64 Linux
 - ✅ Air-gap deployable — all components exportable via Docker
 
